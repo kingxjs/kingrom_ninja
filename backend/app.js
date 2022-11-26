@@ -1,7 +1,5 @@
 'use strict';
 
-process.env.QL_DIR = (process.env.QL_DIR || '/ql') + '/data'
-
 const Koa = require('koa');
 const cors = require('@koa/cors');
 const Router = require('@koa/router');
