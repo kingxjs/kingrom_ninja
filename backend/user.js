@@ -9,7 +9,7 @@ const QRCode = require('qrcode');
 const { addEnv, delEnv, getEnvs, getEnvsCount, updateEnv, addWSCKEnv, delWSCKEnv, getWSCKEnvs, getWSCKEnvsCount, updateWSCKEnv } = require('./ql');
 const path = require('path');
 const qlDir = process.env.QL_DIR || '/ql';
-const notifyFile = path.join(qlDir, 'shell/notify.sh');
+const notifyFile = 'source '+path.join(qlDir, 'shell/api.sh');
 const { exec } = require('child_process');
 const { GET_RANDOM_TIME_UA } = require('./utils/USER_AGENT');
 
@@ -490,7 +490,7 @@ module.exports = class User {
       console.log('Ninja 通知已关闭\n' + title + '\n' + content + '\n' + '已跳过发送');
       return;
     }
-    exec(`${notifyFile} "${title}" "${content}"`, (error, stdout, stderr) => {
+    exec(`${notifyFile} "${title}" "${content}" notify_api`, (error, stdout, stderr) => {
       if (error) {
         console.log(stderr);
       } else {
