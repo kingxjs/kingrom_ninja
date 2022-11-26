@@ -490,7 +490,7 @@ module.exports = class User {
       console.log('Ninja 通知已关闭\n' + title + '\n' + content + '\n' + '已跳过发送');
       return;
     }
-    exec(`${notifyFile} "${title}" "${content}" notify_api`, (error, stdout, stderr) => {
+    exec(`${notifyFile} && notify_api "${title}" "${content}"`, (error, stdout, stderr) => {
       if (error) {
         console.log(stderr);
       } else {
